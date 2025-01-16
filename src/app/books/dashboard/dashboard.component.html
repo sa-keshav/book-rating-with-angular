@@ -1,0 +1,12 @@
+<div>
+  <p>
+    Number of Books: {{ books().length }}
+  </p>
+</div>
+@for (b of books(); track b.isbn) {
+  <app-book
+    [book]="b"
+    (rateUp)="doRateUp($event)"
+    (rateDown)="doRateDown($event)"
+  ></app-book>
+}
