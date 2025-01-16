@@ -1,4 +1,4 @@
-import {Component, input, output, signal} from '@angular/core';
+import {Component, computed, input, output} from '@angular/core';
 import {Book} from '../shared/book';
 import {CurrencyPipe} from '@angular/common';
 import {RatingComponent} from '../rating/rating.component';
@@ -19,19 +19,16 @@ export class BookComponent {
   rateUp = output<Book>();
   rateDown = output<Book>();
 
-  doRateUp(){
+  disableRateUp = computed(() => this.book().rating >= 5)
+  disableRateDown = computed(() => this.book().rating <= 1)
+
+  doRateUp() {
     this.rateUp.emit(this.book())
   }
 
-  doRateDown(){
+  doRateDown() {
     this.rateDown.emit(this.book())
   }
-
-
-
-
-
-
 
   // This would not work
   // constructor() {
