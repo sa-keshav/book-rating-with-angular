@@ -3,6 +3,9 @@ import {Book} from '../shared/book';
 import {CurrencyPipe} from '@angular/common';
 import {RatingComponent} from '../rating/rating.component';
 
+export const RATING_UP_LIMIT = 5;
+export const RATING_DOWN_LIMIT = 1;
+
 @Component({
   selector: 'app-book',
   imports: [CurrencyPipe, RatingComponent],
@@ -19,8 +22,8 @@ export class BookComponent {
   rateUp = output<Book>();
   rateDown = output<Book>();
 
-  disableRateUp = computed(() => this.book().rating >= 5)
-  disableRateDown = computed(() => this.book().rating <= 1)
+  disableRateUp = computed(() => this.book().rating >= RATING_UP_LIMIT)
+  disableRateDown = computed(() => this.book().rating <= RATING_DOWN_LIMIT)
 
   doRateUp() {
     this.rateUp.emit(this.book())
