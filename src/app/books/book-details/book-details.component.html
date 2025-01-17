@@ -1,1 +1,7 @@
-<p>book-details works!</p>
+@if (book(); as book) {
+  <app-book [book]="book"></app-book>
+}
+
+<a routerLink="/books"> Zum Dashboard</a>
+<br>
+<a routerLink="/books/9783864903571"> Zum Angular-Buch</a>

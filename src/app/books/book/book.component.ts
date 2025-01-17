@@ -2,13 +2,14 @@ import {Component, computed, input, output} from '@angular/core';
 import {Book} from '../shared/book';
 import {CurrencyPipe} from '@angular/common';
 import {RatingComponent} from '../rating/rating.component';
+import {RouterLink} from '@angular/router';
 
 const MAX_RATING = 5;
 const MIN_RATING = 1;
 
 @Component({
   selector: 'app-book',
-  imports: [CurrencyPipe, RatingComponent],
+  imports: [CurrencyPipe, RatingComponent, RouterLink],
   templateUrl: './book.component.html',
   styleUrl: './book.component.scss'
 })

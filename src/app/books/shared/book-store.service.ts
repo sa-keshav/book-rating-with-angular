@@ -8,23 +8,23 @@ import {Observable} from 'rxjs';
 })
 export class BookStoreService {
 
-  #apiUrl = 'https://api.angular.schule'; // InjektionToken (also lieber in den Config auslagern)
+  #baseUrl = 'https://api.angular.schule'; // InjektionToken (also lieber in den Config auslagern)
   #http = inject(HttpClient)
 
   getAll(): Observable<Book[]> {
-    return this.#http.get<Book[]>(this.#apiUrl + '/books')
+    return this.#http.get<Book[]>(this.#baseUrl + '/books')
   }
 
   getSingle(isbn: string) :Observable<Book> {
-    return this.#http.get<Book>(this.#apiUrl + '/books/' + isbn)
+    return this.#http.get<Book>(this.#baseUrl + '/books/' + isbn)
   }
 
   create(book: Book) :Observable<Book> {
-    return this.#http.post<Book>(this.#apiUrl + '/books', book)
+    return this.#http.post<Book>(this.#baseUrl + '/books', book)
   }
 
   search(term: string) : Observable<Book[]> {
-    return this.#http.get<Book[]>(this.#apiUrl + '/books/search/' + term)
+    return this.#http.get<Book[]>(this.#baseUrl + '/books/search/' + term)
   }
 
   constructor() {
