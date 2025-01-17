@@ -3,8 +3,8 @@ import {Book} from '../shared/book';
 import {CurrencyPipe} from '@angular/common';
 import {RatingComponent} from '../rating/rating.component';
 
-export const RATING_UP_LIMIT = 5;
-export const RATING_DOWN_LIMIT = 1;
+const MAX_RATING = 5;
+const MIN_RATING = 1;
 
 @Component({
   selector: 'app-book',
@@ -15,15 +15,17 @@ export const RATING_DOWN_LIMIT = 1;
 export class BookComponent {
   // Input: hier fließen daten von Eltern komponente hinein.
   // Die Daten fließen immer von oben nach unten
-  book = input.required<Book>();
+  readonly book = input.required<Book>();
+  readonly minRating = input(MIN_RATING)
+  readonly maxRating = input(MAX_RATING)
 
   // Output: fließen Daten von hier zu Elternkomponente
   // von unten nach oben
   rateUp = output<Book>();
   rateDown = output<Book>();
 
-  disableRateUp = computed(() => this.book().rating >= RATING_UP_LIMIT)
-  disableRateDown = computed(() => this.book().rating <= RATING_DOWN_LIMIT)
+  disableRateUp = computed(() => this.book().rating >= this.maxRating())
+  disableRateDown = computed(() => this.book().rating <= this.minRating())
 
   doRateUp() {
     this.rateUp.emit(this.book())

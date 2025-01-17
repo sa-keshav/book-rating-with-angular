@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { BookComponent } from './book.component';
+import {BookComponent} from './book.component';
 
 describe('BookComponent', () => {
   let component: BookComponent;
@@ -14,6 +14,13 @@ describe('BookComponent', () => {
 
     fixture = TestBed.createComponent(BookComponent);
     component = fixture.componentInstance;
+    fixture.componentRef.setInput('book', {
+      isbn: '1',
+      title: 'Angular',
+      description: 'Grundlagen und mehr',
+      price: 32.90,
+      rating: 5
+    })
     fixture.detectChanges();
   });
 

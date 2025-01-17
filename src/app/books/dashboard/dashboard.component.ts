@@ -1,4 +1,4 @@
-import {Component, computed, inject, signal} from '@angular/core';
+import {Component, inject, signal} from '@angular/core';
 import {Book} from '../shared/book';
 import {BookComponent} from '../book/book.component';
 import {BookRatingService} from '../shared/book-rating.service';

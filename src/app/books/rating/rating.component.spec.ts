@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { RatingComponent } from './rating.component';
+import {RatingComponent} from './rating.component';
 
 describe('RatingComponent', () => {
   let component: RatingComponent;
@@ -14,6 +14,7 @@ describe('RatingComponent', () => {
 
     fixture = TestBed.createComponent(RatingComponent);
     component = fixture.componentInstance;
+    fixture.componentRef.setInput('rating', 3)
     fixture.detectChanges();
   });
 
