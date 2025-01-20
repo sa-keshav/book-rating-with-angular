@@ -4,10 +4,24 @@
   <div class="form-group">
     <label for="isbnInput">ISBN</label>
     <input [formControl]="c.isbn" type="text" id="isbnInput" class="form-control">
-    @if (isInvalid(c.isbn)) {<div class="feedback-error"> Die ISBN ist ungültig.</div>}
-    @if (hasError(c.isbn, 'required')) {<div class="feedback-error"> Die ISBN ist zu kurz.</div>}
-    @if (hasError(c.isbn, 'minlength')) {<div class="feedback-error"> Die ISBN ist zu kurz.</div>}
-    @if (hasError(c.isbn, 'maxlength')) {<div class="feedback-error"> Die ISBN ist zu kurz.</div>}
+    @if (isInvalid(c.isbn)) {
+      <div class="feedback-error"> Die ISBN ist ungültig.</div>
+    }
+    @if (hasError(c.isbn, 'required')) {
+      <div class="feedback-error"> Die ISBN ist zu kurz.</div>
+    }
+    @if (hasError(c.isbn, 'minlength')) {
+      <div class="feedback-error"> Die ISBN ist zu kurz.</div>
+    }
+    @if (hasError(c.isbn, 'maxlength')) {
+      <div class="feedback-error"> Die ISBN ist zu kurz.</div>
+    }
+
+    <pre>{{ c.isbn.errors | json }}</pre>
+
+    <!-- TODO: Ausblick: fehler behandlung in eigene komponente schieben
+    <app-form-errors [controls]="c.isbn" [message]="{required:}"></app-form-error>
+    -->
   </div>
   <div class="form-group">
     <label for="titleInput">Title</label>

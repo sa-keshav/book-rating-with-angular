@@ -1,9 +1,10 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {JsonPipe} from '@angular/common';
 
 @Component({
   selector: 'app-book-create',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, JsonPipe],
   templateUrl: './book-create.component.html',
   styleUrl: './book-create.component.scss'
 })
