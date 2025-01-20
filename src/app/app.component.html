@@ -1,14 +1,12 @@
 <div class="container">
   <h1>{{ title }}</h1>
 
+  <nav class="mb-3" >
+    <a routerLink="/books" class="me-2">Dashboard</a>
+    <a routerLink="/books/create" class="me-2">Create</a>
+    <a routerLink="/books/search" class="me-2">Search</a>
+  </nav>
+
   <router-outlet></router-outlet>
 </div>
 
-<!--
-TODO
--redirect / => /books
--links
-  - BookComponente => Details
-  - Details => Dashboard
-- Detailseite
--->
