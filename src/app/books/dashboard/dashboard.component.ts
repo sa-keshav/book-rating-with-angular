@@ -38,13 +38,32 @@ export class DashboardComponent {
     this.books.update(
       books => books.map(book => book.isbn === ratedBook.isbn ? ratedBook : book)
     )
-
     // oder mit set geht es genauso gut. Aber update ist mehr empfohlen
     //this.books.set(this.books().map(book => book.isbn === ratedBook.isbn ? ratedBook : book))
-
   }
 
-  // wenn man mit computed Signal das lesen würde, aber das wäre zu over-engineered.
-  // booksCount = computed(() => this.books.length)
+  // TODO: check if this list is updated on the UI
+  doDelete(book: Book) {
+    this.bookStoreService.delete(book.isbn).subscribe({
+      next: () => this.bookStoreService.getAll().subscribe(
+        books => {
+          this.books.set(books)
+        }
+      )
+    })
+  }
 
-}
+  // eine einfachere Variation von delete mit nativen confirm() funktion und lokalen update der Liste
+  doDelete2(book: Book){
+    if (!confirm('Buch löschem')){
+      return;
+    }
+    this.bookStoreService.delete(book.isbn).subscribe(() => {
+      this.books.update(books => books.filter(b => b.isbn !== book.isbn))
+    })
+  }
+
+    // wenn man mit computed Signal das lesen würde, aber das wäre zu over-engineered.
+    // booksCount = computed(() => this.books.length)
+
+  }

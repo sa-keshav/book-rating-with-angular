@@ -27,13 +27,11 @@ export class BookDetailsComponent {
     this.route.paramMap.subscribe(params => {
       const isbn = params.get('isbn') // oder ! benutzen anstatt if condition
       if (isbn !== null) {
-        this.bookStoreService.getSingle(isbn).subscribe(
+        this.bookStoreService.getSingle(isbn!).subscribe(
         book => {
           this.book.set(book)
         })
       }
     })
-
-
   }
 }

@@ -23,6 +23,10 @@ describe('DashboardComponent', () => {
     })
     .compileComponents();
 
+    // const storeMock = { // so würde man asynchronität durch synchrone funktionen Mocken
+    //   getAll: () => of([])
+    // };
+
     // eine fertig gerenderte komponente mit den wir agieren können
     fixture = TestBed.createComponent(DashboardComponent);
 

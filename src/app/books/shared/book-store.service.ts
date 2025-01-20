@@ -27,6 +27,10 @@ export class BookStoreService {
     return this.#http.get<Book[]>(this.#baseUrl + '/books/search/' + term)
   }
 
+  delete(isbn: string): Observable<unknown>{
+    return this.#http.delete<unknown>(this.#baseUrl+ '/books' + isbn)
+  }
+
   constructor() {
   }
 }

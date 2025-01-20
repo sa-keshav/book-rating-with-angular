@@ -3,13 +3,16 @@ import {Book} from '../shared/book';
 import {CurrencyPipe} from '@angular/common';
 import {RatingComponent} from '../rating/rating.component';
 import {RouterLink} from '@angular/router';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import {ConfirmationDialogComponent} from '../shared/confirmation-dialog/confirmation-dialog.component';
+
 
 const MAX_RATING = 5;
 const MIN_RATING = 1;
 
 @Component({
   selector: 'app-book',
-  imports: [CurrencyPipe, RatingComponent, RouterLink],
+  imports: [CurrencyPipe, RatingComponent, RouterLink, MatDialogModule],
   templateUrl: './book.component.html',
   styleUrl: './book.component.scss'
 })
@@ -24,6 +27,10 @@ export class BookComponent {
   // von unten nach oben
   rateUp = output<Book>();
   rateDown = output<Book>();
+  delete = output<Book>()
+
+  constructor(private dialog: MatDialog) {
+  }
 
   disableRateUp = computed(() => this.book().rating >= this.maxRating())
   disableRateDown = computed(() => this.book().rating <= this.minRating())
@@ -36,6 +43,19 @@ export class BookComponent {
     this.rateDown.emit(this.book())
   }
 
+  openConfirmationDialog() {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.delete.emit(this.book())
+        console.log("OK triggert ")
+      } else {
+        console.log("CANCEL triggert")
+      }
+    })
+  }
+
   // This would not work
   // constructor() {
   //   console.log('CTOR', this.book())
@@ -45,4 +65,5 @@ export class BookComponent {
   // ngOnInit(){
   //   console.log('INIT', this.book())
   // }
+
 }
