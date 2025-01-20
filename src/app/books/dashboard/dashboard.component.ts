@@ -65,5 +65,4 @@ export class DashboardComponent {
 
     // wenn man mit computed Signal das lesen würde, aber das wäre zu over-engineered.
     // booksCount = computed(() => this.books.length)
-
-  }
+}
