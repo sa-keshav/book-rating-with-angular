@@ -1,26 +1,33 @@
-@let controls = bookForm.controls;
+@let c = bookForm.controls;
 
 <form [formGroup]="bookForm">
   <div class="form-group">
     <label for="isbnInput">ISBN</label>
-    <input [formControl]="controls.isbn" type="text" id="isbnInput" class="form-control">
+    <input [formControl]="c.isbn" type="text" id="isbnInput" class="form-control">
+    @if (isInvalid(c.isbn)) {<div class="feedback-error"> Die ISBN ist ungültig.</div>}
+    @if (hasError(c.isbn, 'required')) {<div class="feedback-error"> Die ISBN ist zu kurz.</div>}
+    @if (hasError(c.isbn, 'minlength')) {<div class="feedback-error"> Die ISBN ist zu kurz.</div>}
+    @if (hasError(c.isbn, 'maxlength')) {<div class="feedback-error"> Die ISBN ist zu kurz.</div>}
   </div>
   <div class="form-group">
     <label for="titleInput">Title</label>
-    <input [formControl]="controls.title" type="text" id="titleInput" class="form-control">
+    <input [formControl]="c.title" type="text" id="titleInput" class="form-control">
   </div>
   <div class="form-group">
     <label for="descriptionInput">Beschreibung</label>
-    <input [formControl]="controls.description" type="text" id="descriptionInput" class="form-control">
+    <input [formControl]="c.description" type="text" id="descriptionInput" class="form-control">
   </div>
   <div class="form-group">
     <label for="ratingInput">Bewertung</label>
-    <input [formControl]="controls.rating" type="text" id="ratingInput" class="form-control">
+    <input [formControl]="c.rating" type="text" id="ratingInput" class="form-control">
   </div>
   <div class="form-group">
     <label for="priceInput">Preis</label>
-    <input [formControl]="controls.price" type="text" id="priceInput" class="form-control">
+    <input [formControl]="c.price" type="text" id="priceInput" class="form-control">
   </div>
 
   <button type="submit" class="btn btn-green">Abschicken</button>
 </form>
+
+<!-- to test the form and if the connection to ForGroups works and show it directly in UI as json -->
+<!--<pre>{{bookForm.value | json }}</pre>-->
