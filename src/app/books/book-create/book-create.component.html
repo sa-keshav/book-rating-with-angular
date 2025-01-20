@@ -40,7 +40,7 @@
     <input [formControl]="c.price" type="text" id="priceInput" class="form-control">
   </div>
 
-  <button type="submit" class="btn btn-green">Abschicken</button>
+  <button type="submit" [disabled]="bookForm.invalid" class="btn btn-green">Abschicken</button>
 </form>
 
 <!-- to test the form and if the connection to ForGroups works and show it directly in UI as json -->
