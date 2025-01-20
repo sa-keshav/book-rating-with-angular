@@ -28,7 +28,7 @@ export class BookStoreService {
   }
 
   delete(isbn: string): Observable<unknown>{
-    return this.#http.delete<unknown>(this.#baseUrl+ '/books' + isbn)
+    return this.#http.delete<unknown>(this.#baseUrl+ '/books/' + isbn)
   }
 
   constructor() {

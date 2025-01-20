@@ -3,6 +3,15 @@
     Number of Books: {{ books().length }}
   </p>
 </div>
+
+<div>  <!-- Lösung 1 -->
+  {{ currentDate1() | date: 'medium' }}
+</div>
+<div> <!-- Lösung 2 -->
+  {{ currentDate2() | date: 'medium' }}
+</div>
+
+<div class=""></div>
 @for (b of books(); track b.isbn) {
   <app-book
     [book]="b"

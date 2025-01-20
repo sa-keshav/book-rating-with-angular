@@ -13,7 +13,7 @@
 
     <button type="button" class="btn btn-green" [disabled]="disableRateUp()" (click)="doRateUp()"> + </button>
     <button type="button" class="btn btn-red" [disabled]="disableRateDown()" (click)="doRateDown()"> - </button>
-    <button type="button" class="btn btn-red" (click)="openConfirmationDialog()"> Delete </button>
+    <button type="button" class="btn btn-yellow" (click)="openConfirmationDialog()"> Delete </button>
 
     <a [routerLink]="['/books', book().isbn]"> Details </a>
 
