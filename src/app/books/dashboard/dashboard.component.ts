@@ -6,6 +6,8 @@ import {BookStoreService} from '../shared/book-store.service';
 import {AsyncPipe, DatePipe} from '@angular/common';
 import {map, startWith, Subscription, timer} from 'rxjs';
 import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
+import {Store} from '@ngrx/store';
+import {BookActions} from '../store/book.actions';
 
 @Component({
   selector: 'app-dashboard',
@@ -39,11 +41,13 @@ export class DashboardComponent implements OnDestroy {
   currentDate5= timer(0, 1000).pipe(map( _ => Date.now()))
 
   private bookStoreService = inject(BookStoreService);
+  private store = inject(Store)
 
   constructor() {
-    this.bookStoreService.getAll().subscribe(books => {
-      this.books.set(books)
-    })
+    // this.bookStoreService.getAll().subscribe(books => {
+    //   this.books.set(books)
+    // })
+    this.store.dispatch(BookActions.loadBooks())
 
     // Lösung 1 continue
     this.intervalId = setInterval(() => {
