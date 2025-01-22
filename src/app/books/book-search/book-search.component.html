@@ -1,3 +1,13 @@
 <div class="form-group">
   <input type="search" class="form-control" [formControl]="searchControl">
 </div>
+
+<ul>
+  @for (b of books(); track b.isbn) {
+    <li>
+      <a [routerLink]="['/books', b.isbn]">
+        {{ b.title }}
+      </a>
+    </li>
+  }
+</ul>
