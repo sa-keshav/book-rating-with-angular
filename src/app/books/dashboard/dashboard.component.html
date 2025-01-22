@@ -11,6 +11,18 @@
   {{ currentDate2() | date: 'medium' }}
 </div>
 
+<div> <!-- Lösung 3 -->
+  {{ currentDate3() | date: 'medium' }}
+</div>
+
+<div> <!-- Lösung 4 -->
+  {{ currentDate4() | date: 'medium' }}
+</div>
+
+<div> <!-- Lösung 5 -->
+  {{ currentDate5 | async | date: 'medium' }}
+</div>
+
 <div class=""></div>
 @for (b of books(); track b.isbn) {
   <app-book
